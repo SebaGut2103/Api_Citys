@@ -20,23 +20,70 @@ section{
     display: flex;
     justify-content: center;
 }
-#Containers{
+#Containers {
     padding: 1%;
-    justify-content: center;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     border: black solid;
     height: 55vh;
     width: 30vw;
+    background-color: white;
+    overflow-y: auto;
 }
-#Conatiners #txtos{
+
+#searchBtn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f7f7f7;
+    border: 2px solid #fec600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#searchBtn:hover {
+    background-color: #fec600;
+    color: white;
+}
+
+#results {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.municipality-item {
+    background-color: #f7f7f7;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#Containers .txtos {
     overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-#text{
-    border-color: 0 0 10px rgb(8, 175, 161);
+
+#text {
+    border: solid 10px #f7f7f7;
     text-align: center;
     background-color: white;
-    border: solid 10px #f7f7f7;
-    width: 20.5vw;
+    width: 100%;
+    max-width: 20.5vw;
     height: 10vh;
     font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    #Containers {
+        width: 90vw;
+    }
+    
+    #text {
+        max-width: 90%;
+    }
 }
