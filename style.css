@@ -28,7 +28,7 @@ section{
     border: black solid;
     height: 55vh;
     width: 30vw;
-    background-color: white;
+    background-color: rgb(189, 95, 95);
     overflow-y: auto;
 }
 
@@ -36,10 +36,12 @@ section{
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #f7f7f7;
-    border: 2px solid #fec600;
+    background-color: #6c64dd;
+    border: 2px solid #00fed4;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    border-radius: 50px;
+    width: 10vw;
 }
 
 #searchBtn:hover {

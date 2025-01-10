@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBtn = document.getElementById('searchBtn');
     const resultsDiv = document.getElementById('results');
 
-    const API_BASE_URL = 'https://api-colombia.com/swagger/index.html';
+    const API_BASE_URL = 'https://api-colombia.com/api/v1';
+
+    searchInput.onchange = () => searchLocation();
 
     async function searchLocation() {
         const searchTerm = searchInput.value.trim();
@@ -20,32 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (department) {
                 // Found a department, get its municipalities
-                const municipalities = await fetch(`${API_BASE_URL}/Department/${department.id}/municipalities`)
-                    .then(res => res.json());
-
-                displayDepartmentResults(department, municipalities);
-                return;
+                displayError(department.name);
+            } else {
+                displayError('No se encontró el departamento o municipio especificado.');
             }
 
-            // If not found as department, try to find as municipality
-            const municipalities = await fetch(`${API_BASE_URL}/Municipality`)
-                .then(res => res.json());
-            
-            const municipality = municipalities.find(mun => 
-                mun.name.toLowerCase() === searchTerm.toLowerCase()
-            );
-
-            if (municipality) {
-                // Found a municipality, get its department
-                const department = await fetch(`${API_BASE_URL}/Department/${municipality.departmentId}`)
-                    .then(res => res.json());
-
-                displayMunicipalityResults(municipality, department);
-                return;
-            }
-
-            // If nothing found
-            displayError('No se encontró el departamento o municipio especificado.');
+            console.log(department)
 
         } catch (error) {
             console.error('Error:', error);
